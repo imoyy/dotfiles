@@ -1,0 +1,103 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set Rset smartcase
+set sneak
+set quickscope
+set NERDTree
+
+map <leader><leader> <Action>(SearchEverywhere)
+
+" 面板相关
+map <leader>i <Action>(ActivateGitHubCopilotChatToolWindow)
+map <leader>e <Action>(ActivateProjectToolWindow)
+
+map H <Action>(PreviousTab)
+map L <Action>(NextTab)
+
+" 查看文档
+map gh <Action>(QuickJavaDoc)
+
+" 跳转到声明
+map gd <Action>(GotoDeclaration)
+
+" 显示用法
+map gu <Action>(FindUsages)
+
+" 书签
+map <leader>ha <Action>(ToggleBookmark)
+map <leader>h1 <Action>(GotoBookmark1)
+map <leader>h2 <Action>(GotoBookmark2)
+map <leader>h3 <Action>(GotoBookmark3)
+map <leader>h4 <Action>(GotoBookmark4)
+map <leader>h5 <Action>(GotoBookmark5)
+map <leader>h6 <Action>(GotoBookmark6)
+map <leader>h7 <Action>(GotoBookmark7)
+map <leader>h8 <Action>(GotoBookmark8)
+map <leader>h9 <Action>(GotoBookmark9)
+map <leader>h0 <Action>(GotoBookmark10)
+
+" 查看项目问题
+map <leader>xx <Action>(ActivateProblemsViewToolWindow)
+map <leader>ss <Action>(FileStructurePopup)
+map <leader>fs <Action>(SaveDocument)
+map <leader>fx <Action>(CloseContent)
+
+"重命名符号
+map <leader>cr <Action>(RenameElement)
+" 代码操作
+map <leader>ca <Action>(ShowIntentionActions)
+
+" before method
+map <C-[> <Action>(MethodUp)
+
+" after method
+map <C-]> <Action>(MethodDown)
+
+" 使用 Ctrl + T 跳转回上一个位置
+map <C-t> <Action>(Back)
+
+" 使用 Ctrl + O 跳转到下一个位置
+map <C-o> <Action>(Forward)
+
+" Display options
+map <leader>cd <action>(ToggleDistractionFreeMode)
+map <leader>cz <action>(ToggleZenMode)
+map <leader>cf <action>(ToggleFullScreen)
+
+map <leader>fd <action>(ReformatCode)
+
+" 以下是其他一些可能有用的映射，根据需要取消注释
+
+" 关闭当前文件
+map <C-w>q <Action>(CloseContent)
+
+" 保存所有文件
+map :w <Action>(SaveAll)
+" 注释当前行
+map gcc <Action>(CommentByLineComment)
+
+# Focus on terminal
+map <leader>tt <Action>(ActivateTerminalToolWindow)
+
+" 设置相对行号
+set relativenumber
+
+" 设置忽略大小写搜索
+set ignorecase
+
+" 智能大小写搜索 (如果搜索词包含大写字母，则区分大小写)
+set smartcase
+
+" 搜索高亮
+set hlsearch
+
+" 开启增量搜索
+set incsearch
