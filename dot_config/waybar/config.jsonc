@@ -1,0 +1,37 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 6,
+  "margin-top": 4,
+  "margin-left": 6,
+  "margin-right": 6,
+  "margin-bottom": 0,
+  "height": 40,
+  "include": [
+		"~/.config/waybar/shared/modules.jsonc",
+		"~/.config/waybar/shared/hyprland.jsonc"
+	],
+  "modules-left": [
+    "custom/power",
+    "wlr/taskbar",
+    "privacy",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "tray",
+    // "bluetooth",
+    "pulseaudio",
+    "memory",
+    "cpu",
+    "battery",
+    "custom/scroller-mode",
+    // "custom/weather",
+    "clock",
+    "power-profiles-daemon",
+    "custom/notification"
+  ]
+}

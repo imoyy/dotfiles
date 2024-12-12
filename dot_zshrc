@@ -108,7 +108,7 @@ export EDITOR='zeditor'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cm="chezmoi"
-alias zeditor="zed"
+alias zed="zeditor"
 alias code="code --no-sandbox"
 alias vim="nvim"
 alias vizsh="nvim ~/.zshrc"

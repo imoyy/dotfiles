@@ -1,0 +1,36 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 6,
+  "margin-top": 4,
+  "margin-left": 6,
+  "margin-right": 6,
+  "margin-bottom": 0,
+  "height": 40,
+  "include": [
+		"~/.config/waybar/shared/modules.jsonc",
+		"~/.config/waybar/shared/niri.jsonc"
+	],
+  "modules-left": [
+    "custom/power",
+    "wlr/taskbar",
+    "privacy",
+    "niri/window"
+  ],
+  "modules-center": [
+    "niri/workspaces"
+  ],
+  "modules-right": [
+    "tray",
+    "bluetooth",
+    "pulseaudio",
+    "memory",
+    "cpu",
+    "battery",
+    "custom/weather",
+    "clock",
+    "power-profiles-daemon",
+    "custom/notification"
+  ]
+}
