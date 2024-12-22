@@ -23,14 +23,15 @@
   ],
   "modules-right": [
     "tray",
-    "bluetooth",
     "pulseaudio",
     "memory",
     "cpu",
     "battery",
-    "custom/weather",
     "clock",
     "power-profiles-daemon",
     "custom/notification"
-  ]
+  ],
+  "wlr/taskbar": {
+    "tooltip-format": "{title} | {app_id}"
+  }
 }

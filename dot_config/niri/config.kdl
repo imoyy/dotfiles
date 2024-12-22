@@ -6,7 +6,7 @@ input {
     keyboard {
         xkb {
             layout "us"
-            options "grp:ctrl_alt_toggle,compose:ralt,ctrl:nocaps"
+            options "compose:ralt,ctrl:nocaps"
         }
     }
 
@@ -91,7 +91,10 @@ spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPL
 spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "QT_QPA_PLATFORMTHEME"
 spawn-at-startup "waybar" "-c" "/home/moyy/.config/waybar/config.niri.jsonc"
-spawn-at-startup "albert"
+// spawn-at-startup "albert"
+spawn-at-startup "resources"
+spawn-at-startup "wofi"
+spawn-at-startup "1password" "--silent"
 spawn-at-startup "swaync"
 spawn-at-startup "nm-applet"
 spawn-at-startup "blueman-applet"
@@ -101,23 +104,6 @@ spawn-at-startup "hyprpaper"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "env" "DISPLAY=:0" "pot"
 // spawn-at-startup "xwayland-satellite" ":1"
-
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "gtk-theme" "'Adwaita-dark'"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "icon-theme" "'Qogir-Dark'"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "color-scheme" "'prefer-dark'"
-spawn-at-startup "gsettings" "set" "com.github.stunkymonkey.nautilus-open-any-terminal" "terminal" "kitty"
-spawn-at-startup "gsettings" "set" "com.github.stunkymonkey.nautilus-open-any-terminal" "new-tab" "true"
-spawn-at-startup "gsettings" "set" "com.github.stunkymonkey.nautilus-open-any-terminal" "flatpak" "system"
-
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "cursor-theme" "'Bibata-Modern-Ice'"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "cursor-size" "20"
-
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-name" "'Noto Sans CJK sc 12'"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "document-font-name" "'Noto Sans CJK sc 12'"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "monospace-font-name" "'codenewroman Nerd Font Mono 12'"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-antialiasing" "'rgba'"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-hinting" "'full'"
-
 
 environment {
     XDG_CURRENT_DESKTOP "niri"
@@ -130,7 +116,8 @@ environment {
     QT_QPA_PLATFORMTHEME "qt5ct"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
-    QT_STYLE_OVERRIDE "adwaita"
+    // QT_STYLE_OVERRIDE "adwaita"
+    QT_STYLE_OVERRIDE "kvantum"
     
     // GTK
     GTK_THEME "Adwaita-dark"
@@ -141,7 +128,7 @@ environment {
     XCURSOR_SIZE "20"
     GDK_SCALE "2"
     HYPRCURSOR_SIZE "20"
-    GDK_BACKEND "wayland,x11"
+    GDK_BACKEND "wayland"
     OZONE_PLATFORM "wayland"
     WLR_NO_HARDWARE_CURSORS "1"
     XIM "fcitx"
@@ -202,12 +189,45 @@ animations {
     }
 }
 
+
+workspace "arch"
+workspace "browser"
+workspace "code"
+workspace "java"
+workspace "what"
+workspace "data"
+workspace "note"
+workspace "chat"
+workspace "source"
+
+
 window-rule {
-    geometry-corner-radius 10
-    clip-to-geometry true
+    match app-id="librewolf"
+    open-on-workspace "browser"
 }
 
+window-rule {
+    match title=".*notion"
+    match app-id="notion-app"
+    open-on-workspace "note"
+}
 
+window-rule {
+    match app-id="code-oss"
+    match app-id="cursor-url-handler"
+    open-on-workspace "code"
+}
+
+window-rule {
+    match title=".*Discord"
+    match app-id="materialgram"
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match title="Resources"
+    open-on-workspace "source"
+}
 
 binds { 
     // Mod-Shift-/, which is usually the same as Mod-?,
@@ -215,23 +235,24 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Assign apps
-    Ctrl+space { spawn "albert" "toggle"; }
-    Ctrl+Shift+space { spawn "1password" "--show"; }
+    Ctrl+space { spawn "wofi" "--show" "drun"; }
+    Ctrl+Shift+space { spawn "1password" "--quick-access"; }
     Mod+E { spawn "nautilus"; }
     Mod+Alt+L { spawn "hyprlock"; }
 
     // Window actions
     Ctrl+Q { close-window; }
-    Mod+Shift+M { quit; }
+    Mod+Alt+M { quit; }
     Mod+Ctrl+Shift+M { power-off-monitors; }
     Mod+R { switch-preset-column-width; }
     Mod+Shift+C { center-column; }
 
     // Application shortcuts
-    Mod+Shift+V { spawn "albert" "show" "cp "; }
-    Mod+C { spawn "kitty"; }
+    // Mod+Shift+V { spawn "albert" "show" "cp "; }
+    Mod+Shift+V { spawn "copyq" "show"; }
+    Mod+T { spawn "kitty"; }
     Mod+B { spawn "librewolf"; }
-    Alt+E { spawn "zeditor"; }
+    Mod+C { spawn "cursor"; }
     Alt+A { spawn "curl" "127.0.0.1:60828/input_translate"; }
     Alt+D { spawn "curl" "127.0.0.1:60828/selection_translate"; }
     Alt+S { spawn "grimblast" "copysave" "area" "/home/moyy/.cache/com.pot-app.desktop/pot_screenshot_cut.png" "&&" "curl" "127.0.0.1:60828/ocr_translate?screenshot=false"; }

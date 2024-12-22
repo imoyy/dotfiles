@@ -3,22 +3,22 @@
     "exec": "$WAYBAR_OUTPUT_NAME",
     "format": "{icon}",
     "persistent-workspaces": {
-      "*": 6
+      // "*": 8
     },
     "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "󰆼",
-      "10": "󰻠",
+      "arch": "",
+      "browser": "",
+      "code": "",
+      "java": "",
+      "what": "",
+      "data": "󰆼",
+      "note": "",
+      "chat": "",
+      "source": "󰻠",
       "11": "",
       "12": "",
-      "default": ""
+      "default": ""
     },
     // "sort-by-number": true,
     "signal": 8
